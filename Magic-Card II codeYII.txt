@@ -1,0 +1,146 @@
+
+HTML:
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+
+    <div class="card">
+        <img src="logo.png" alt="">
+        <div class="icon">
+            <i class="fa-brands fa-instagram">yasinhursgunell</i>
+            <i class="fa-brands fa-youtube">codeYII</i>
+        </div>
+    </div>
+
+
+
+
+
+</body>
+
+</html>
+
+
+CSS:
+
+
+@property --rotate{
+  syntax: '<angle>';
+  initial-value: 132deg;
+  inherits: false;
+}
+:root{
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+body{
+  min-height: 100vh;
+  background: black;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
+}
+.card{
+  background: #212534;
+  width: var(--card-width);
+  height: var(--card-height);
+  margin-top: 80px;
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgba(88,199,250 / 0%);
+  cursor: pointer;
+  font-family: 'cursive';
+}
+.card img{
+  width: 220px;
+  height: 220px;
+  border-radius: 50%;
+  margin-top: -50px;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.card:hover img{
+  opacity: 1;
+  transition: opacity 1;
+}
+.icon{
+  position: absolute;
+  top: 80%;
+}
+.icon i{
+  font-size: 10px;
+  color: aliceblue;
+  opacity: 0;
+  transition: opacity 1s;
+}
+.card:hover .icon i{
+  opacity: 1;
+}
+.card:hover{
+  color: rgb(88,199,250 / 100%);
+  transition: color 1s;
+}
+.card:hover::before,
+.card:hover::after{
+  animation: none;
+  opacity: 0;
+}
+.card::before{
+  content: '';
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(var(--rotate),black,purple 50%, gold);
+  position: absolute;
+  z-index: 1;
+  top: -1%;
+  left: -2%;
+  animation: spin 2.5s linear infinite;
+}
+.card::after{
+  position: absolute;
+  content: '';
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(var(--rotate), black, purple 50%, gold);
+  opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+@keyframes spin{
+  0%{
+    --rotate: 0deg;
+  }
+  100%{
+    --rotate:360deg;
+  }
+}
